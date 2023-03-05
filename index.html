@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <h1>Rock Papper Scissors</h1>
 
     <script>
+      function getComputerChoice() {
+        let computerOptions = ["rock", "paper", "scissors"];
+        let computerChoice = Math.floor(Math.random() * computerOptions.length);
 
-        function getComputerChoice() {
-            let computerOptions = ["rock", "paper", "scissors"];
-            let computerChoice = Math.floor(Math.random() * computerOptions.length);
-            
-            return computerOptions[computerChoice];
+
+        return computerOptions[computerChoice];
+      }
+
+      function playRound(playerSelection, computerSelection) {
+        // your code here!
+        if(playerSelection == computerSelection){
+          return "It´s a draw"
+        }
+        else if(playerSelection == "rock" && computerSelection == "scissors"){
+          playerScore++
+          return "You Win";
+        }
+        else if(playerSelection == "rock" &&  computerSelection == "paper"){
+          computerScore++
+          return "You Lose"
+        }
+      }
+
+      function game(){
+        for(let i = 0; i < 5; i++){
+          const playerSelection = "rock";
+          const computerSelection = getComputerChoice();
+  
+          console.log(playRound(playerSelection, computerSelection));
+          console.log(playerScore, computerScore)
         }
 
-        let computerSelection = getComputerChoice();
+        //return playRound(playerSelection, computerSelection);
+      }
 
-        
+      computerScore = 0;
+      playerScore = 0;
+ 
+      game()
 
+      if (playerScore > computerScore){
+        console.log("You win this game")
+      }
+      else if(playerScore == computerScore){
+        console.log("It´s a draw")
+      }
+      else{
+        console.log("You Lose Bro")
+      }
 
     </script>
-
-</body>
+    
+  </body>
 </html>
